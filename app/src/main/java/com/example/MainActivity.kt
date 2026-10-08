@@ -1,5 +1,6 @@
 package com.example
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,9 +18,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import com.example.ads.AdBanner
 import com.example.ads.AdConfig
+import com.example.ads.InterstitialAdManager
 import com.example.model.Language
 import com.example.model.LearningMode
 import com.example.ui.components.TopHeaderBar
@@ -36,23 +39,26 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var soundHelper: SoundHelper
     private lateinit var userPreferences: UserPreferences
+    private lateinit var interstitialAdManager: InterstitialAdManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Centralized Google Mobile Ads initialization
+        // Centralized Google Mobile Ads initialization (COPPA & Families compliant)
         AdConfig.initialize(this)
 
         soundHelper = SoundHelper(this)
         userPreferences = UserPreferences(this)
+        interstitialAdManager = InterstitialAdManager(this)
         soundHelper.isSoundEnabled = userPreferences.isSoundEnabled
 
         setContent {
             NumberooTheme {
                 NumberooApp(
                     soundHelper = soundHelper,
-                    userPreferences = userPreferences
+                    userPreferences = userPreferences,
+                    interstitialAdManager = interstitialAdManager
                 )
             }
         }
@@ -67,8 +73,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NumberooApp(
     soundHelper: SoundHelper,
-    userPreferences: UserPreferences
+    userPreferences: UserPreferences,
+    interstitialAdManager: InterstitialAdManager
 ) {
+    val context = LocalContext.current
+    val activity = context as? Activity
+
     var selectedMode by remember { mutableStateOf(LearningMode.LEARN) }
     var currentLanguage by remember { mutableStateOf(userPreferences.selectedLanguage) }
     var isSoundEnabled by remember { mutableStateOf(userPreferences.isSoundEnabled) }
@@ -88,8 +98,10 @@ fun NumberooApp(
             TopHeaderBar(
                 selectedMode = selectedMode,
                 onSelectMode = { mode ->
-                    selectedMode = mode
-                    soundHelper.playPop()
+                    interstitialAdManager.onMilestoneReached(activity) {
+                        selectedMode = mode
+                        soundHelper.playPop()
+                    }
                 },
                 currentLanguage = currentLanguage,
                 onToggleLanguage = {
@@ -139,21 +151,36 @@ fun NumberooApp(
                         CountObjectsScreen(
                             currentLanguage = currentLanguage,
                             soundHelper = soundHelper,
-                            onAwardStar = { handleAddStar() }
+                            onAwardStar = { handleAddStar() },
+                            onNextQuestion = { nextAction ->
+                                interstitialAdManager.onMilestoneReached(activity) {
+                                    nextAction()
+                                }
+                            }
                         )
                     }
                     LearningMode.ADD -> {
                         AdditionScreen(
                             currentLanguage = currentLanguage,
                             soundHelper = soundHelper,
-                            onAwardStar = { handleAddStar() }
+                            onAwardStar = { handleAddStar() },
+                            onNextQuestion = { nextAction ->
+                                interstitialAdManager.onMilestoneReached(activity) {
+                                    nextAction()
+                                }
+                            }
                         )
                     }
                     LearningMode.SUBTRACT -> {
                         SubtractionScreen(
                             currentLanguage = currentLanguage,
                             soundHelper = soundHelper,
-                            onAwardStar = { handleAddStar() }
+                            onAwardStar = { handleAddStar() },
+                            onNextQuestion = { nextAction ->
+                                interstitialAdManager.onMilestoneReached(activity) {
+                                    nextAction()
+                                }
+                            }
                         )
                     }
                 }

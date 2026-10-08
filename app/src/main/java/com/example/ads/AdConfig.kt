@@ -5,43 +5,44 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 
 /**
- * Centralized AdMob configuration for Numberoo.
+ * Centralized AdMob configuration for Numberoo - Learn Count Add Subtract.
  * Published under ViveScript Solutions LLC.
  *
- * Current configuration uses Google's official AdMob test identifiers.
- * When preparing for production release, replace the test IDs with your verified
- * ViveScript production AdMob App ID and Ad Unit IDs below.
+ * Configured in strict compliance with Google Play Families Policy & COPPA:
+ * - Target Age Groups: Ages 5 & under, Ages 6–8
+ * - TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE
+ * - TAG_FOR_UNDER_AGE_OF_CONSENT_TRUE
+ * - MAX_AD_CONTENT_RATING_G
+ * - Excludes behavioral targeting and remarketing
  */
 object AdConfig {
 
     /**
-     * Set to false when compiling the production release build with registered AdMob IDs.
+     * Active Application ID
      */
-    const val IS_TEST_MODE: Boolean = true
+    const val APP_ID: String = "ca-app-pub-5222053984568989~6477952392"
 
     /**
-     * Google Mobile Ads Official Test App ID:
-     * ca-app-pub-3940256099942544~3347511713
+     * Active Banner Ad Unit ID
      */
-    const val TEST_APP_ID: String = "ca-app-pub-3940256099942544~3347511713"
+    const val BANNER_AD_UNIT_ID: String = "ca-app-pub-5222053984568989/7992098638"
 
     /**
-     * Google Mobile Ads Official Test Banner Ad Unit ID:
-     * ca-app-pub-3940256099942544/6300978111
+     * Active Interstitial Ad Unit ID
      */
-    const val TEST_BANNER_AD_UNIT_ID: String = "ca-app-pub-3940256099942544/6300978111"
+    const val INTERSTITIAL_AD_UNIT_ID: String = "ca-app-pub-5222053984568989/1678061018"
 
     /**
-     * Production AdMob Banner Ad Unit ID placeholder.
-     * Replace with production ID issued by Google AdMob console:
-     */
-    private const val PROD_BANNER_AD_UNIT_ID: String = "ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY"
-
-    /**
-     * Returns the active Banner Ad Unit ID depending on build configuration.
+     * Returns the active Banner Ad Unit ID
      */
     val bannerAdUnitId: String
-        get() = if (IS_TEST_MODE) TEST_BANNER_AD_UNIT_ID else PROD_BANNER_AD_UNIT_ID
+        get() = BANNER_AD_UNIT_ID
+
+    /**
+     * Returns the active Interstitial Ad Unit ID
+     */
+    val interstitialAdUnitId: String
+        get() = INTERSTITIAL_AD_UNIT_ID
 
     /**
      * Initializes Google Mobile Ads SDK with COPPA & Google Play Families policy settings.
@@ -55,6 +56,6 @@ object AdConfig {
             .build()
 
         MobileAds.setRequestConfiguration(requestConfiguration)
-        MobileAds.initialize(context) { /* initialization status callback */ }
+        MobileAds.initialize(context) { /* initialization callback */ }
     }
 }

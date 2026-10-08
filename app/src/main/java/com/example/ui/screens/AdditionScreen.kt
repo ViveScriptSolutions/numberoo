@@ -53,6 +53,7 @@ fun AdditionScreen(
     currentLanguage: Language,
     soundHelper: SoundHelper,
     onAwardStar: () -> Unit,
+    onNextQuestion: (() -> Unit) -> Unit = { it() },
     modifier: Modifier = Modifier
 ) {
     var num1 by remember { mutableIntStateOf(Random.nextInt(1, 6)) }
@@ -277,7 +278,11 @@ fun AdditionScreen(
         CelebrationOverlay(
             visible = showCelebration,
             language = currentLanguage,
-            onContinue = { resetQuestion() }
+            onContinue = {
+                onNextQuestion {
+                    resetQuestion()
+                }
+            }
         )
     }
 }

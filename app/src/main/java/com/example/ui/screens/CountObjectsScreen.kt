@@ -61,6 +61,7 @@ fun CountObjectsScreen(
     currentLanguage: Language,
     soundHelper: SoundHelper,
     onAwardStar: () -> Unit,
+    onNextQuestion: (() -> Unit) -> Unit = { it() },
     modifier: Modifier = Modifier
 ) {
     var targetCount by remember { mutableIntStateOf(Random.nextInt(1, 9)) }
@@ -240,7 +241,9 @@ fun CountObjectsScreen(
             visible = showCelebration,
             language = currentLanguage,
             onContinue = {
-                resetQuestion()
+                onNextQuestion {
+                    resetQuestion()
+                }
             }
         )
     }

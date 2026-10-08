@@ -55,6 +55,7 @@ fun SubtractionScreen(
     currentLanguage: Language,
     soundHelper: SoundHelper,
     onAwardStar: () -> Unit,
+    onNextQuestion: (() -> Unit) -> Unit = { it() },
     modifier: Modifier = Modifier
 ) {
     // Total is between 3 and 10, takeAway is between 1 and total - 1
@@ -254,7 +255,11 @@ fun SubtractionScreen(
         CelebrationOverlay(
             visible = showCelebration,
             language = currentLanguage,
-            onContinue = { resetQuestion() }
+            onContinue = {
+                onNextQuestion {
+                    resetQuestion()
+                }
+            }
         )
     }
 }

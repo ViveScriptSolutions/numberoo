@@ -55,17 +55,18 @@ Numberoo is designed primarily for young children (ages 3–8). We strictly adhe
 
 ## 5. Advertising and Monetization
 
-Numberoo is currently configured using **Google Mobile Ads (AdMob) official test identifiers**:
+Numberoo is configured using **Google Mobile Ads (AdMob)**:
 
-* **Application ID:** `ca-app-pub-3940256099942544~3347511713` (Google official test ID)
-* **Banner Ad Unit ID:** `ca-app-pub-3940256099942544/6300978111` (Google official test ID)
+* **Application ID:** `ca-app-pub-5222053984568989~6477952392`
+* **Banner Ad Unit ID:** `ca-app-pub-5222053984568989/7992098638`
+* **Interstitial Ad Unit ID:** `ca-app-pub-5222053984568989/1678061018`
 
 In accordance with Google Play Families Policy and COPPA guidelines, all ad requests are strictly tagged with:
 * `setTagForChildDirectedTreatment(TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)`
 * `setTagForUnderAgeOfConsent(TAG_FOR_UNDER_AGE_OF_CONSENT_TRUE)`
 * `setMaxAdContentRating(MAX_AD_CONTENT_RATING_G)`
 
-This ensures that only non-personalized, family-safe, G-rated advertisements can ever be requested, with no behavioral tracking, user profiling, or remarketing.
+This ensures that only non-personalized, family-safe, G-rated advertisements can ever be requested, with no behavioral tracking, user profiling, or remarketing. Google Mobile Ads SDK is an approved Google Play certified family ad SDK. Interstitial ads are shown solely at natural learning milestones with frequency capping, never interrupting active child gameplay.
 
 ---
 
