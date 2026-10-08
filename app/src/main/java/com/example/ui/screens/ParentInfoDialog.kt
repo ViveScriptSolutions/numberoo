@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -60,25 +61,21 @@ fun ParentInfoDialog(
                     .padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Header with Mascot
-                Box(
+                // Feature Banner
+                Image(
+                    painter = painterResource(id = R.drawable.img_feature_graphic),
+                    contentDescription = "Numberoo Feature Banner",
                     modifier = Modifier
-                        .size(64.dp)
-                        .clip(CircleShape)
-                        .background(KangarooGold),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_numberoo_logo),
-                        contentDescription = "Numberoo Logo",
-                        modifier = Modifier.size(58.dp).clip(CircleShape)
-                    )
-                }
+                        .fillMaxWidth()
+                        .height(110.dp)
+                        .clip(RoundedCornerShape(16.dp)),
+                    contentScale = ContentScale.Crop
+                )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Numberoo",
+                    text = "Numberoo v2.0",
                     fontSize = 22.sp,
                     fontWeight = FontWeight.ExtraBold,
                     color = KangarooGold

@@ -1,7 +1,8 @@
-# Design Assets Specification — Numberoo
+# Design Assets Specification & Deliverables — Numberoo
 
 **Publisher:** ViveScript Solutions LLC  
 **Application:** Numberoo - Learn Count Add Subtract  
+**Package:** `com.vivescriptsolutions.numberoo`  
 
 ---
 
@@ -19,53 +20,28 @@
 
 ---
 
-## 2. Google Play Store Assets
+## 2. Generated Google Play Store Graphics
 
-### 2.1 High-Resolution App Icon
-* **Dimensions:** 512 x 512 px
-* **Format:** 32-bit PNG (with alpha)
-* **Maximum File Size:** 1024 KB
-* **Design Composition:** Cute smiling baby kangaroo mascot (Numberoo) holding a colorful number 1 numeral on a solid `#FFB300` sunny amber background with subtle rounded border.
-* **Adaptive Layers in App:**
-  * Foreground: `@drawable/ic_numberoo_logo` (centered in 66dp safe zone)
-  * Background: `@drawable/ic_launcher_background` (`#FFB300`)
-  * Legacy PNG fallbacks generated across `mdpi`, `hdpi`, `xhdpi`, `xxhdpi`, and `xxxhdpi` mipmap folders.
+All assets below are pre-rendered and exported directly in `/play_store_assets/` ready for immediate upload to the **Google Play Console**:
 
-### 2.2 Feature Graphic
-* **Dimensions:** 1024 x 500 px
-* **Format:** JPEG or 24-bit PNG (no alpha)
-* **Maximum File Size:** 15 MB
-* **Design Composition:**
-  * Left: Cheerful Numberoo mascot hopping with open arms surrounded by floating colorful balloons (🎈), apples (🍎), and gold stars (⭐).
-  * Right: Large friendly typography:
-    * Headline: **Numberoo**
-    * Sub-headline: **Learn • Count • Add • Subtract**
-    * Badges: **Fun Math for Kids • Bilingual English & বাংলা**
-  * Background: Soft gradient shifting from sky blue (`#E1F5FE`) to sunny warm cream (`#FFF9C4`).
-
-### 2.3 Screenshots Plan (Phone 16:9 / 20:9)
-* **Dimensions:** 1080 x 2400 px (Portrait)
-* **Minimum Required:** 4 screenshots (Max 8)
-* **Slide Plan:**
-  1. **Screenshot 1 — Learn Numbers 0–20:**  
-     * Headline: *Learn Numbers 0 to 20!*  
-     * Subtitle: *Interactive cards, cheerful sounds, and bilingual words.*
-  2. **Screenshot 2 — Count with Numberoo:**  
-     * Headline: *Tap & Count Friendly Objects!*  
-     * Subtitle: *Apples, stars, ducks, and cupcakes that bounce and pop.*
-  3. **Screenshot 3 — Simple Visual Addition:**  
-     * Headline: *See Numbers Join Together!*  
-     * Subtitle: *Visual groups make addition easy and intuitive.*
-  4. **Screenshot 4 — Simple Visual Subtraction:**  
-     * Headline: *Taking Away Made Simple!*  
-     * Subtitle: *Cross out objects to understand subtraction in seconds.*
-  5. **Screenshot 5 — Star Celebrations:**  
-     * Headline: *Celebrate Every Milestone!*  
-     * Subtitle: *Earn gold stars with fun confetti animations.*
+| Asset File | Target Purpose | Dimensions | Format |
+|---|---|---|---|
+| `play_store_assets/icon_512x512.png` | Google Play Store Icon | 512 x 512 px | 32-bit PNG |
+| `play_store_assets/feature_graphic_1024x500.png` | Google Play Feature Graphic | 1024 x 500 px | 24-bit PNG |
+| `play_store_assets/screenshot_phone_1080x1920.png` | Phone Screenshot Showcase | 1080 x 1920 px (9:16) | 24-bit PNG |
+| `play_store_assets/screenshot_tablet_7inch_1200x1920.png` | 7-inch Tablet Screenshot | 1200 x 1920 px (10:16) | 24-bit PNG |
+| `play_store_assets/screenshot_tablet_10inch_1920x1200.png` | 10-inch Tablet Screenshot | 1920 x 1200 px (16:10) | 24-bit PNG |
 
 ---
 
-## 3. In-App Visual Assets
-* `res/drawable/ic_numberoo_logo.png`: Mascot logo for app launcher and top brand identity.
-* `res/drawable/img_numberoo_hero.png`: Hero visual graphic showing Numberoo with floating math items.
-* Adaptive launcher icon XML drawables in `res/drawable/` and `res/mipmap-*/`.
+## 3. In-App Embedded Visual Assets
+
+* `app/src/main/res/drawable/ic_numberoo_logo.png`: Mascot logo for adaptive icon foreground and in-app header branding.
+* `app/src/main/res/drawable/img_numberoo_hero.png`: Hero visual graphic showing Numberoo with floating math items.
+* `app/src/main/res/drawable/img_feature_graphic.png`: High-resolution feature banner for in-app welcome / about dialog.
+* `app/src/main/res/drawable/img_screenshot_phone.png`: Phone screenshot graphic.
+* `app/src/main/res/drawable/img_screenshot_tablet.png`: Tablet showcase graphic.
+* Adaptive launcher icon XML drawables:
+  * `app/src/main/res/drawable/ic_launcher_background.xml` (Solid `#FFB300`)
+  * `app/src/main/res/drawable/ic_launcher_foreground.xml` (Safe-zone 66dp centered mascot layer)
+  * Mipmap raster fallbacks (`mipmap-mdpi`, `mipmap-hdpi`, `mipmap-xhdpi`, `mipmap-xxhdpi`, `mipmap-xxxhdpi`).
