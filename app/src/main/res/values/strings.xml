@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Numberoo</string>
+    <string name="app_full_title">Numberoo - Learn Count Add Subtract</string>
+    <string name="mode_learn">Learn</string>
+    <string name="mode_count">Count</string>
+    <string name="mode_add">Add (+)</string>
+    <string name="mode_subtract">Subtract (−)</string>
+    <string name="company_name">ViveScript Solutions LLC</string>
+    <string name="copyright_notice">© 2026 ViveScript Solutions LLC. All rights reserved.</string>
+</resources>

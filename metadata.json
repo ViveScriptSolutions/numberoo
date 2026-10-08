@@ -1,0 +1,6 @@
+{
+  "name": "Numberoo - Learn Count Add Subtract",
+  "description": "A colorful, playful educational Android app for young children to learn numbers, counting, simple addition, and simple subtraction.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
