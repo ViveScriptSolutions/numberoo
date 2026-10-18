@@ -5,19 +5,13 @@ enum class LearningMode(
     val banglaTitle: String,
     val iconEmoji: String
 ) {
-    LEARN("Learn", "সংখ্যা শিখি", "🔤"),
-    COUNT("Count", "গণনা করি", "🔢"),
-    ADD("Add (+)", "যোগ করি", "➕"),
-    SUBTRACT("Subtract (−)", "বিয়োগ করি", "➖")
+    NUMBER_LOOP("Numbers 1–20", "১–২০ শিখি", "🔄"),
+    COUNT_ANIMALS("Count 1–10", "১–১০ গুনি", "🔢"),
+    FIND_NUMBER("Find & Tap", "খুঁজে বের করো", "🎯")
 }
 
-data class MathProblem(
-    val operand1: Int,
-    val operand2: Int,
-    val isAddition: Boolean,
+data class FindNumberQuestion(
+    val targetNumber: Int,
     val itemType: CountingItemType,
     val options: List<Int>
-) {
-    val correctAnswer: Int
-        get() = if (isAddition) operand1 + operand2 else operand1 - operand2
-}
+)

@@ -35,24 +35,29 @@ class InterstitialAdManager(private val context: Context) {
         if (isLoading || interstitialAd != null) return
         isLoading = true
 
-        val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(
-            context,
-            AdConfig.interstitialAdUnitId,
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdLoaded(ad: InterstitialAd) {
-                    interstitialAd = ad
-                    isLoading = false
-                    setupCallback(ad)
-                }
+        try {
+            val adRequest = AdRequest.Builder().build()
+            InterstitialAd.load(
+                context,
+                AdConfig.interstitialAdUnitId,
+                adRequest,
+                object : InterstitialAdLoadCallback() {
+                    override fun onAdLoaded(ad: InterstitialAd) {
+                        interstitialAd = ad
+                        isLoading = false
+                        setupCallback(ad)
+                    }
 
-                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                    interstitialAd = null
-                    isLoading = false
+                    override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                        interstitialAd = null
+                        isLoading = false
+                    }
                 }
-            }
-        )
+            )
+        } catch (e: Exception) {
+            interstitialAd = null
+            isLoading = false
+        }
     }
 
     private fun setupCallback(ad: InterstitialAd) {

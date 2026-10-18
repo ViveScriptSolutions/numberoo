@@ -21,13 +21,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -36,44 +37,54 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.ui.theme.KangarooGold
-import com.example.ui.theme.KangarooGoldLight
 
 @Composable
 fun NumberooMascotCard(
     speechText: String,
     modifier: Modifier = Modifier
 ) {
-    val infiniteTransition = rememberInfiniteTransition(label = "hop")
+    val infiniteTransition = rememberInfiniteTransition(label = "mascotHop")
     val bounceOffset by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = -6f,
         animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 650, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "hop"
+    )
+    val sparkleScale by infiniteTransition.animateFloat(
+        initialValue = 0.9f,
+        targetValue = 1.3f,
+        animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 800, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Reverse
         ),
-        label = "mascotBounce"
+        label = "sparkle"
     )
 
+    // Warm, cheerful card with high-contrast borders
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(KangarooGoldLight.copy(alpha = 0.2f))
-            .border(1.5.dp, KangarooGold.copy(alpha = 0.35f), RoundedCornerShape(20.dp))
+            .shadow(4.dp, RoundedCornerShape(22.dp))
+            .clip(RoundedCornerShape(22.dp))
+            .background(Color(0xFFFFF9E6)) // Solid cheerful warm cream
+            .border(2.5.dp, Color(0xFFE65100), RoundedCornerShape(22.dp)) // Strong dark amber border
             .padding(10.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            // Mascot animated icon / avatar
+            // Mascot Animated Avatar
             Box(
                 modifier = Modifier
                     .offset(y = bounceOffset.dp)
                     .size(54.dp)
                     .clip(CircleShape)
                     .background(KangarooGold)
-                    .border(2.dp, Color.White, CircleShape),
+                    .border(2.5.dp, Color(0xFFE65100), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
@@ -86,28 +97,38 @@ fun NumberooMascotCard(
 
             Spacer(modifier = Modifier.width(10.dp))
 
-            // Speech bubble
+            // High-Contrast Speech Bubble
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clip(RoundedCornerShape(topStart = 4.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 16.dp))
-                    .background(Color.White)
-                    .border(1.dp, KangarooGold.copy(alpha = 0.2f), RoundedCornerShape(topStart = 4.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 16.dp))
+                    .shadow(2.dp, RoundedCornerShape(topStart = 4.dp, topEnd = 18.dp, bottomStart = 18.dp, bottomEnd = 18.dp))
+                    .clip(RoundedCornerShape(topStart = 4.dp, topEnd = 18.dp, bottomStart = 18.dp, bottomEnd = 18.dp))
+                    .background(Color(0xFFFFFFFF)) // Pure crisp white
+                    .border(1.5.dp, Color(0xFF424242), RoundedCornerShape(topStart = 4.dp, topEnd = 18.dp, bottomStart = 18.dp, bottomEnd = 18.dp))
                     .padding(horizontal = 12.dp, vertical = 8.dp)
             ) {
-                Column {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "Numberoo 🦘",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Black,
+                            color = Color(0xFFBF360C) // Dark, rich rust-amber for high readability
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = speechText,
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = Color(0xFF1A1A1A) // Deep charcoal-black for 100% WCAG AAA contrast
+                        )
+                    }
                     Text(
-                        text = "Numberoo says:",
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = KangarooGold
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Text(
-                        text = speechText,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        text = "⭐",
+                        fontSize = 18.sp,
+                        modifier = Modifier
+                            .scale(sparkleScale)
+                            .padding(start = 4.dp)
                     )
                 }
             }

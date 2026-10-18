@@ -8,45 +8,43 @@
 ## 1. Store Listing Details
 
 ### App Title (Max 30 characters)
-`Numberoo: Kids Math & Count`  
-*(Length: 27 characters — compliant with Google Play 30-character policy, no promotional buzzwords, no emojis)*
+`Numberoo: Toddler Count 1-20`  
+*(Length: 28 characters — compliant with Google Play 30-character policy, no promotional buzzwords, no emojis)*
 
 ### Short Description (Max 80 characters)
-`Fun numbers, counting, addition, and subtraction for kids with cute Numberoo!`  
-*(Length: 76 characters — clear, benefits-driven, kid-friendly)*
+`Fun numbers 1-20, counting 1-10, animated animals & cheerful voice for kids!`  
+*(Length: 76 characters — clear, benefits-driven, toddler-friendly)*
 
 ---
 
 ## 2. Full Description
 
 ```text
-Welcome to Numberoo, a joyful and colorful math playground designed especially for toddlers, preschoolers, and early learners! 
+Welcome to Numberoo, a joyful and colorful early learning playground designed especially for toddlers, preschoolers, and kids ages 3 to 6! 
 
-Guided by our cheerful baby kangaroo mascot Numberoo, children discover the joy of mathematics through hands-on visual play rather than stressful tests. With vibrant 2D illustrations, playful animations, cheerful sounds, and jumbo touch-friendly buttons, young learners can easily explore numbers and basic arithmetic even before they can read fluently.
+Guided by our cheerful baby kangaroo mascot Numberoo, children learn numbers and counting through delightful visual play, cheerful animations, bouncy animals, and clear voice guidance. With extra-large candy buttons, cute animals, and gentle feedback, toddlers can easily explore numbers independently even before they can read fluently.
 
-⭐ 4 INTERACTIVE LEARNING MODES
+⭐ 3 TODDLER-FOCUSED MODES
 
-1. LEARN NUMBERS (0–20):
-Explore numbers from 0 to 20 with giant colorful numerals, spoken pronunciations, and real-time word displays in both English and Bangla (বাংলা). Children can tap the screen to hear the number spoken aloud or tap individual objects to count along step by step.
+1. NUMBERS 1–20 LOOP:
+Explore numbers 1 through 20 with giant colorful numerals, spoken pronunciations, and 20 adorable animated animal friends! Includes a toddler-favorite "Auto-Play Loop" mode that automatically cycles through numbers like a cheerful musical storybook.
 
-2. COUNT OBJECTS:
-Interactive counting activities with familiar, friendly items—delicious apples, twinkling stars, bright balloons, friendly kittens, rubber ducks, toy cars, and sweet cupcakes! Children tap each object directly to watch it bounce, hear a joyful pop sound, and see its number badge appear.
+2. TAP & COUNT 1–10:
+Interactive counting activities with familiar, friendly animals—kittens, puppies, ducks, frogs, bunnies, butterflies, and teddy bears! Toddlers tap each animal to watch it leap, hear a joyful pop sound, and see its shiny number badge appear.
 
-3. SIMPLE ADDITION (+):
-Learn how numbers combine! Addition is introduced through two clear, colorful visual groups. Children see the quantities side-by-side, count the total, and select the correct answer to celebrate with hopping animations.
+3. FIND & TAP (ANIMAL MATCH):
+Numberoo speaks the number and asks toddlers to find it among 3 big, pillowy candy buttons. Features positive audio praise, joyful confetti, and zero penalties for mistakes.
 
-4. SIMPLE SUBTRACTION (−):
-Understand "taking away" intuitively! Objects are visually crossed out, allowing children to clearly see how subtraction works in the real world and count the items that remain.
+🌟 KEY FEATURES FOR FAMILIES & TODDLERS
 
-🌟 KEY FEATURES FOR FAMILIES
-
+• PURE NUMBERS & COUNTING: No complicated math or stressful tests—100% focused on numbers 1–20 and counting 1–10.
 • BILINGUAL SUPPORT: Seamlessly switch between English and Bangla (বাংলা) with native numerals (১, ২, ৩) and spoken audio.
 • CHILD-SAFE & OFFLINE: Fully functional offline. No login, no user accounts, and zero personal data collection.
 • REWARDING CELEBRATIONS: Earn shiny gold stars and enjoy festive confetti bursts after answering correctly.
-• AUDIO & HAPTIC FEEDBACK: Cheerful sound effects and speech pronunciation with a one-tap mute button for quiet places.
+• OPTIMIZED MEMORY: Ultra-lightweight memory footprint conforming to Google Play memory standards.
 • DESIGNED FOR LITTLE HANDS: Extra-large touch targets, high contrast colors, and zero complicated navigation menus.
 
-Give your child a playful, confident start in mathematics with Numberoo!
+Give your child a playful, confident start in numbers with Numberoo!
 
 Developed by ViveScript Solutions LLC
 https://www.vivescriptsolutions.com/
@@ -58,26 +56,16 @@ https://www.vivescriptsolutions.com/
 ## 3. SEO / ASO Keyword Strategy
 
 ### Primary Keywords
-* `kids math app`
-* `learn counting for kids`
-* `preschool math games`
-* `numbers for toddlers`
+* `toddler numbers app`
+* `learn counting 1 to 10`
+* `preschool numbers 1 to 20`
+* `kids animal counting game`
 
 ### Secondary Keywords
-* `simple addition for kindergarten`
-* `subtraction for kids`
-* `bilingual math english bangla`
-* `number recognition 1 to 20`
-* `offline educational math app`
-
-### Long-Tail Search Queries
-* "how to teach toddlers to count numbers"
-* "easy addition and subtraction app without ads for kids"
-* "kindergarten counting toys and shapes"
-* "bangla number learning app for children"
-
-### User Search Intent
-Parents, kindergarten teachers, and guardians searching for an intuitive, distraction-free, privacy-safe application to introduce their 3–7 year old child to counting and basic arithmetic without complicated menus or aggressive monetization.
+* `early math for toddlers 3 6 years`
+* `bilingual number learning english bangla`
+* `toddler counting offline`
+* `number recognition for kindergarten`
 
 ---
 
@@ -87,4 +75,4 @@ Parents, kindergarten teachers, and guardians searching for an intuitive, distra
 * **Family Program Category:** Ages 5 & Under, Ages 6–8
 * **Content Rating:** Everyone (PEGI 3 / ESRB Everyone)
 * **Interactive Elements:** None (No location sharing, no user interactions, no social features)
-* **App Access:** All functionality is open and available immediately without credentials or special configuration.
+* **App Access:** All functionality is open immediately without credentials or restrictions.

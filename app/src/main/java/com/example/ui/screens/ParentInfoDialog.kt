@@ -75,13 +75,13 @@ fun ParentInfoDialog(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Numberoo v2.0",
+                    text = "Numberoo v4.0",
                     fontSize = 22.sp,
                     fontWeight = FontWeight.ExtraBold,
                     color = KangarooGold
                 )
                 Text(
-                    text = "Learn • Count • Add • Subtract",
+                    text = "Numbers 1–20 • Tap & Count 1–10 • Animals",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
                     color = PlayfulSkyBlue

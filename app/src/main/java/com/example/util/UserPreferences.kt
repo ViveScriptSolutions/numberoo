@@ -11,6 +11,7 @@ class UserPreferences(context: Context) {
     companion object {
         private const val KEY_STARS = "stars_collected"
         private const val KEY_SOUND_ENABLED = "sound_enabled"
+        private const val KEY_MUSIC_ENABLED = "music_enabled"
         private const val KEY_LANGUAGE = "selected_language"
         private const val KEY_PROBLEMS_SOLVED = "problems_solved"
     }
@@ -22,6 +23,10 @@ class UserPreferences(context: Context) {
     var isSoundEnabled: Boolean
         get() = prefs.getBoolean(KEY_SOUND_ENABLED, true)
         set(value) = prefs.edit().putBoolean(KEY_SOUND_ENABLED, value).apply()
+
+    var isMusicEnabled: Boolean
+        get() = prefs.getBoolean(KEY_MUSIC_ENABLED, true)
+        set(value) = prefs.edit().putBoolean(KEY_MUSIC_ENABLED, value).apply()
 
     var selectedLanguage: Language
         get() {

@@ -3,11 +3,13 @@ package com.example
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import com.example.model.CountingThemes
+import com.example.model.FindNumberQuestion
 import com.example.model.Language
-import com.example.model.MathProblem
+import com.example.model.LearningMode
 import com.example.util.NumberFormatter
 import com.example.util.UserPreferences
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -40,6 +42,8 @@ class ExampleRobolectricTest {
         assertEquals("পাঁচ", NumberFormatter.getWord(5, Language.BANGLA))
         assertEquals("Ten", NumberFormatter.getWord(10, Language.ENGLISH))
         assertEquals("দশ", NumberFormatter.getWord(10, Language.BANGLA))
+        assertEquals("Twenty", NumberFormatter.getWord(20, Language.ENGLISH))
+        assertEquals("বিশ", NumberFormatter.getWord(20, Language.BANGLA))
     }
 
     @Test
@@ -53,12 +57,23 @@ class ExampleRobolectricTest {
     }
 
     @Test
-    fun mathProblem_calculatesCorrectAdditionAndSubtraction() {
-        val item = CountingThemes.items.first()
-        val addProblem = MathProblem(operand1 = 3, operand2 = 2, isAddition = true, itemType = item, options = listOf(4, 5, 6))
-        assertEquals(5, addProblem.correctAnswer)
+    fun countingThemes_has20ItemsForToddlers() {
+        assertEquals(20, CountingThemes.items.size)
+        val kangaroo = CountingThemes.getItemForNumber(1)
+        assertEquals("kangaroo", kangaroo.id)
+        assertEquals("🦘", kangaroo.emoji)
 
-        val subProblem = MathProblem(operand1 = 5, operand2 = 3, isAddition = false, itemType = item, options = listOf(1, 2, 3))
-        assertEquals(2, subProblem.correctAnswer)
+        val star = CountingThemes.getItemForNumber(20)
+        assertEquals("star", star.id)
+        assertEquals("⭐", star.emoji)
+    }
+
+    @Test
+    fun learningModes_containExpectedToddlerModes() {
+        val modes = LearningMode.values()
+        assertEquals(3, modes.size)
+        assertTrue(modes.contains(LearningMode.NUMBER_LOOP))
+        assertTrue(modes.contains(LearningMode.COUNT_ANIMALS))
+        assertTrue(modes.contains(LearningMode.FIND_NUMBER))
     }
 }

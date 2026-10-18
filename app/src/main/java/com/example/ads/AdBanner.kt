@@ -38,8 +38,12 @@ fun AdBanner(
                             // Non-blocking fallback when offline
                         }
                     }
-                    val adRequest = AdRequest.Builder().build()
-                    loadAd(adRequest)
+                    try {
+                        val adRequest = AdRequest.Builder().build()
+                        loadAd(adRequest)
+                    } catch (e: Exception) {
+                        // Safe fallback on emulators without adservices
+                    }
                 }
             }
         )

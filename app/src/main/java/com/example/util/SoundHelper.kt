@@ -19,56 +19,56 @@ class SoundHelper(private val context: Context) : TextToSpeech.OnInitListener {
         try {
             toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 75)
         } catch (e: Exception) {
-            // Audio track/tone generator fallback
+            // Audio track fallback
         }
         try {
             tts = TextToSpeech(context.applicationContext, this)
         } catch (e: Exception) {
-            // TTS unavailable
+            // TTS fallback
         }
     }
 
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             isTtsReady = true
-            tts?.setPitch(1.15f) // Slightly higher child-friendly cheerful pitch
-            tts?.setSpeechRate(0.85f) // Slightly slower for clarity
+            tts?.setPitch(1.25f) // Cheerful, warm, child-friendly pitch
+            tts?.setSpeechRate(0.85f) // Clear pacing for 3-6 year olds
         }
     }
 
     fun playPop() {
         if (!isSoundEnabled) return
         try {
-            toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 70)
+            toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 60)
         } catch (e: Exception) {
-            // Ignore sound error
+            // Ignore
         }
     }
 
     fun playSuccess() {
         if (!isSoundEnabled) return
         try {
-            toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 250)
+            toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 220)
         } catch (e: Exception) {
-            // Ignore sound error
+            // Ignore
         }
     }
 
     fun playError() {
         if (!isSoundEnabled) return
         try {
-            toneGenerator?.startTone(ToneGenerator.TONE_PROP_NACK, 180)
+            toneGenerator?.startTone(ToneGenerator.TONE_PROP_NACK, 140)
         } catch (e: Exception) {
-            // Ignore sound error
+            // Ignore
         }
     }
 
     fun playFanfare() {
         if (!isSoundEnabled) return
         try {
-            toneGenerator?.startTone(ToneGenerator.TONE_CDMA_ALERT_NETWORK_LITE, 350)
+            toneGenerator?.startTone(ToneGenerator.TONE_CDMA_ALERT_NETWORK_LITE, 300)
         } catch (e: Exception) {
-            // Ignore sound error
+            // Ignore
         }
     }
 
@@ -79,7 +79,6 @@ class SoundHelper(private val context: Context) : TextToSpeech.OnInitListener {
                 val banglaLocale = Locale.forLanguageTag("bn-BD")
                 val result = tts?.setLanguage(banglaLocale)
                 if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    // Fallback to English if Bengali speech voice data is not installed on device
                     tts?.language = Locale.US
                 }
             } else {
@@ -92,8 +91,25 @@ class SoundHelper(private val context: Context) : TextToSpeech.OnInitListener {
                 tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null)
             }
         } catch (e: Exception) {
-            // Speech error fallback
+            // Fallback
         }
+    }
+
+    fun speakNumberWithAnimal(
+        number: Int,
+        numberWord: String,
+        animalNameSingular: String,
+        animalNamePlural: String,
+        banglaName: String,
+        language: Language
+    ) {
+        val speech = if (language == Language.BANGLA) {
+            "$numberWord! $banglaName!"
+        } else {
+            val animal = if (number == 1) animalNameSingular else animalNamePlural
+            "$numberWord! $animal!"
+        }
+        speak(speech, language)
     }
 
     fun release() {
